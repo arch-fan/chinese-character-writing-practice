@@ -20,6 +20,6 @@ for i, x in enumerate(parts):
         "size": "2"
     }
     response = requests.post(url, headers=headers, data=payload)
-    with open(f"letras{i}.pdf", "wb") as file:
+    with open(f"chars{i}.pdf", "wb") as file:
         file.write(response.content)
     print(response)
