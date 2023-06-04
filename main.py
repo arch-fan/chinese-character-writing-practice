@@ -1,6 +1,15 @@
 import requests
+from PyPDF2 import PdfMerger
+from io import BytesIO
+import sys
 
-hanzi = input("Input the characters: ")
+merger = PdfMerger()
+
+if len(sys.argv) > 1:
+    hanzi = sys.argv[1]
+else:
+    hanzi = input("Input the characters: ")
+
 hanzi = hanzi.replace(" ", "").replace("\n", "")
 
 n = 200
@@ -20,6 +29,7 @@ for i, x in enumerate(parts):
         "size": "2"
     }
     response = requests.post(url, headers=headers, data=payload)
-    with open(f"chars{i}.pdf", "wb") as file:
-        file.write(response.content)
-    print(response)
+    merger.append(BytesIO(response.content))
+
+merger.write("pdf/result.pdf")
+merger.close()

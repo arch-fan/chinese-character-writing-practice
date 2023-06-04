@@ -3,13 +3,13 @@
 [简体中文](README_CN.md) | [English](README.md) | Español
 
 ## Uso
-Ejecuta el script con "python main.py" e introduce los carácteres deseados.
+Ejecuta el script con "python main.py" e introduce los carácteres deseados o pásalos como parámetros.
 
-![input](input.png)
+![input](/img/input.png)
 
-Una vez hecho, en la carpeta en la que hayas ejecutado el script, se habrán creado varios PDFs con los carácteres que hayas introducido.
+Una vez hecho, en la carpeta "/pdf" se habrá creado un pdf llamado "result.pdf" con los carácteres que hayas introducido.
 
-![output](output.png)
+![output](/img/output.png)
 
 ## Creditos
 
