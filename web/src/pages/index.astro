@@ -1,0 +1,19 @@
+---
+import Header from "../components/Header.astro";
+import CharsInput from "../components/CharsInput.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main
+    class="w-full relative m-auto max-w-2xl flex-col gap-4 h-dvh flex items-center justify-center"
+  >
+    <Header />
+    <h1 class="font-bold text-4xl animate-fade-down">
+      Chinese Character <span class="text-yellow-300">Writing</span> Practice
+    </h1>
+    <CharsInput />
+  </main>
+</Layout>
+
+<style></style>

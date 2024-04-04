@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-2">
+  <textarea class="animate-fade-left">Todo</textarea>
+  <button class="animate-fade-up">Go</button>
+</div>
+
+<script>
+  import { textToPdfUrl } from "../scripts/pdf";
+  const $textarea = document.querySelector("textarea") as HTMLTextAreaElement;
+
+  const $button = document.querySelector("button") as HTMLButtonElement;
+
+  $button.addEventListener("click", async () => {
+    const pdfUrl = await textToPdfUrl($textarea.value);
+    window.open(pdfUrl, "_blank");
+  });
+</script>
