@@ -1,16 +1,45 @@
-<div class="flex flex-col gap-2">
-  <textarea class="animate-fade-left">Todo</textarea>
-  <button class="animate-fade-up">Go</button>
+---
+import Loading from "../icons/Loading.astro";
+---
+
+<div class="flex flex-col gap-4 w-full items-center">
+  <textarea
+    class="animate-fade-left bg-transparent outline-none max-w-sm w-full flex h-32 rounded border border-neutral-100 p-2 resize-none"
+    placeholder="Paste characters here..."></textarea>
+  <button
+    class="animate-fade-up py-2 px-8 bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-600 transition-all font-bold rounded"
+    disabled>Go</button
+  >
+  <Loading
+    id="loading-svg"
+    class="opacity-0 fill-white size-8 transition-all"
+  />
 </div>
 
 <script>
   import { textToPdfUrl } from "../scripts/pdf";
+  import { isHanzi } from "../scripts/utils";
+
   const $textarea = document.querySelector("textarea") as HTMLTextAreaElement;
+  const $loading = document.querySelector("#loading-svg") as SVGSVGElement;
+
+  $textarea.addEventListener("input", () => {
+    $textarea.value = $textarea.value.trim().replace(/\s+/g, "");
+    if ($textarea.value.length <= 0 || !isHanzi($textarea.value)) {
+      $button.disabled = true;
+    } else {
+      $button.disabled = false;
+    }
+  });
 
   const $button = document.querySelector("button") as HTMLButtonElement;
 
   $button.addEventListener("click", async () => {
+    $loading.style.opacity = "1";
     const pdfUrl = await textToPdfUrl($textarea.value);
+    $loading.style.opacity = "0";
     window.open(pdfUrl, "_blank");
   });
+
+  $textarea.focus();
 </script>
