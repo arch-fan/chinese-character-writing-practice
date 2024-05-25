@@ -1,8 +1,12 @@
-# chinese-character-writing-practice 
+# chinese-character-writing-practice
 
 [简体中文](README_CN.md) | [English](README.md) | Español
 
+> [!NOTE]
+> Ahora en web! https://arch-fan.github.io/chinese-character-writing-practice/
+
 ## Uso
+
 Ejecuta el script con "python main.py" e introduce los carácteres deseados o pásalos como parámetros.
 
 ![input](/img/input.png)

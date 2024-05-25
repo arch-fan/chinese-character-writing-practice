@@ -1,8 +1,12 @@
-# chinese-character-writing-practice 
+# chinese-character-writing-practice
 
 简体中文 | [English](README.md) | [Español](README_ES.md)
 
+> [!NOTE]
+> 现在在网上！https://arch-fan.github.io/chinese-character-writing-practice/
+
 ## 使用方法
+
 运行脚本 "python main.py" 并输入所需的汉字或将它们作为参数传递。
 
 ![input](/img/input.png)
