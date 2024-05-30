@@ -23,8 +23,19 @@ import Loading from "../icons/Loading.astro";
   const $textarea = document.querySelector("textarea") as HTMLTextAreaElement;
   const $loading = document.querySelector("#loading-svg") as SVGSVGElement;
 
+  let isCompositioning = false;
+
+  $textarea.addEventListener("compositionstart", () => {
+    isCompositioning = true;
+  });
+
   $textarea.addEventListener("compositionend", () => {
-    $textarea.value = $textarea.value.trim().replace(/\s+/g, "");
+    isCompositioning = false;
+  });
+
+  $textarea.addEventListener("input", () => {
+    if (!isCompositioning)
+      $textarea.value = $textarea.value.trim().replace(/\s+/g, "");
     if ($textarea.value.length <= 0 || !isHanzi($textarea.value)) {
       $button.disabled = true;
     } else {
