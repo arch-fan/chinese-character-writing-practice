@@ -49,7 +49,12 @@ import Loading from "../icons/Loading.astro";
     $loading.style.opacity = "1";
     const pdfUrl = await textToPdfUrl($textarea.value);
     $loading.style.opacity = "0";
-    window.open(pdfUrl, "_blank");
+
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    const rand = crypto.getRandomValues(new Uint32Array(8))[0].toString(16);
+    link.download = `writing-${rand}.pdf`;
+    link.click();
   });
 
   $textarea.focus();
